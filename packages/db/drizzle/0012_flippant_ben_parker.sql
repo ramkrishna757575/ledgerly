@@ -1,0 +1,1 @@
+ALTER TABLE `sessions` ADD `role` text DEFAULT 'owner' NOT NULL;

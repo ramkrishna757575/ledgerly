@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-page: #f6f6f3;
+  --color-surface: #ffffff;
+  --color-line: #e2e2dc;
+  --color-ink: #1c1d1a;
+  --color-muted: #666860;
+  --color-accent: #1f6f5c;
+  --color-accent-ink: #ffffff;
+  --color-danger: #b3362b;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-md border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-accent;
+  }
+  .label {
+    @apply flex flex-col gap-1 text-sm text-muted;
+  }
+  .button {
+    @apply rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-ink hover:opacity-90 disabled:opacity-50;
+  }
+  .button-quiet {
+    @apply rounded-md border border-line px-3 py-1.5 text-sm text-muted hover:text-ink disabled:opacity-50;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-surface;
+  }
+}
+
+/* Chart colours: the first five slots of a validated categorical palette, with
+   their own steps for the dark surface. Slot order keeps neighbours distinct for
+   colour-blind readers, so do not reorder them. */
+:root {
+  color-scheme: light;
+  --viz-1: #2a78d6;
+  --viz-2: #eb6834;
+  --viz-3: #1baf7a;
+  --viz-4: #eda100;
+  --viz-5: #e87ba4;
+  --viz-other: #898781;
+  --viz-grid: #e1e0d9;
+  --viz-axis: #c3c2b7;
+}
+
+/* Dark follows the device unless a theme is chosen, and a chosen theme wins both
+   ways: "light" stays light on a dark device. The values appear twice because CSS
+   cannot share one block between a media query and an attribute selector. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-page: #141513;
+    --color-surface: #1d1e1b;
+    --color-line: #32342f;
+    --color-ink: #ecece7;
+    --color-muted: #a3a59c;
+    --color-accent: #58b79f;
+    --color-accent-ink: #10201c;
+    --color-danger: #ef8a7f;
+    --viz-1: #3987e5;
+    --viz-2: #d95926;
+    --viz-3: #199e70;
+    --viz-4: #c98500;
+    --viz-5: #d55181;
+    --viz-grid: #2c2c2a;
+    --viz-axis: #383835;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-page: #141513;
+  --color-surface: #1d1e1b;
+  --color-line: #32342f;
+  --color-ink: #ecece7;
+  --color-muted: #a3a59c;
+  --color-accent: #58b79f;
+  --color-accent-ink: #10201c;
+  --color-danger: #ef8a7f;
+  --viz-1: #3987e5;
+  --viz-2: #d95926;
+  --viz-3: #199e70;
+  --viz-4: #c98500;
+  --viz-5: #d55181;
+  --viz-grid: #2c2c2a;
+  --viz-axis: #383835;
+}

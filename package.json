@@ -1,0 +1,26 @@
+{
+  "name": "ledgerly",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @ledgerly/server --filter @ledgerly/web dev",
+    "start": "pnpm --filter @ledgerly/server start",
+    "build": "pnpm --filter @ledgerly/web build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check-statement": "node apps/server/src/scripts/check-statement.ts",
+    "restore": "node apps/server/src/scripts/restore.ts",
+    "perf": "node apps/server/src/scripts/perf.ts",
+    "db:generate": "pnpm --filter @ledgerly/db generate",
+    "mcp": "node packages/mcp/src/stdio.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "license": "AGPL-3.0-or-later"
+}

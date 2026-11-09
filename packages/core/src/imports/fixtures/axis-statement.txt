@@ -1,0 +1,34 @@
+DEMO CUSTOMER
+Joint Holder :- -
+FLAT 1, DEMO APARTMENTS
+DEMO CITY                                                                                           Customer ID :100000001
+DEMO STATE AND DEMO                                                                                  IFSC Code :UTIB0000001
+560001                                                                                               MICR Code :560211001
+                                                                                                     Nominee Registered : Y
+DEMO CUSTOMER Mobile No :XXXXXX0000
+DEMO CUSTOMER Email ID:demo@example.com                                                               PAN :XXXXX0000X
+Scheme :SB-DEMO SAVINGS
+             Statement of Account No :123456789012345 for the period (From : 01-10-2026 To : 31-10-2026)
+Tran Date    Chq No                   Particulars                   Debit          Credit             Balance          Init.
+                                                                                                                        Br
+                      OPENING BALANCE                                                                    100000.00
+                      SB:123456789012345:Int.Pd:01-07-2026 to 30-
+01-10-2026            09-2026                                                              400.00          100400.00 999
+                      UPI/P2M/100000000003/SWIGGY/swiggy@icici
+02-10-2026            /Demo Bank//P2M/                                       1250.50                       99149.50 999
+                      UPI/P2A/100000000004/Priya Verma/UPI
+03-10-2026            /Demo Bank                                              500.00                       98649.50 999
+                      ACH-DR-DE ACH INDIAN CLEARING CORP-
+04-10-2026            1234567890-DEMO000001                                  15000.00                       83649.50 999
+                      ACH-DR-DE ACH INDIAN CLEARING CORP-
+04-10-2026            1234567890-DEMO000001                                  15000.00                       68649.50 999
+                      NEFT/DEMOB2610050001/ACME TECHNOLOGIES
+                      LIMITED/DEMO BANK/OCTOBER SALARY
+05-10-2026            October 26                                                           85000.00        153649.50 999
+                      Demo Card Payment DE 1234
+20-10-2026            Ref#DEMOREF000001                                      12000.00                      141649.50 999
+                                                                    TRANSACTION TOTAL        43750.50          85400.00
+                                                                    CLOSING BALANCE                       141649.50
+Legends used in Account Statement
+Int.Pd-Interest paid to customer
+                                                                                                          ++++ End of Statement ++++

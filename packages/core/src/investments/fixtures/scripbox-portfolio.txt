@@ -1,0 +1,24 @@
+Your Scripbox Portfolio Report
+Demo Investor's
+Portfolio Summary
+As On Nov 9, 2026
+Questions? Write to support@scripbox.example
+
+Demo Investor's Mutual Funds Portfolio Summary as on Nov 9, 2026                    1 of 5
+Mutual Funds - Portfolio Holdings
+Demo Investor's > Mutual Funds > Debt 1-2 of 2 funds
+ Fund                           Holding %   Current   Amount    Total Gains   XIRR %    Unrealised  Realised  Units     Avg   Current NAV
+                                            Value     Invested  Gain / Loss             Gain / Loss Gain / Loss
+ Demo Liquid Fund
+ Growth (R)                     8.57 %      15,300    14,000    1,300         7.50 %    1,300       0         150.00          102.00
+ Liquid • 11112222
+ Example Debt Fund -
+ Regular Growth (R)             21.95 %     39,200    42,000    -2,800        *-4.1 %   -2,800      0         800.00          49.00
+ Short Duration • 55556666/7
+ Total                          30.52 %     54,500    56,000    -1,500        -2.68 %   -1,500      0
+Demo Investor's Mutual Funds Portfolio Summary as on Nov 9, 2026                    2 of 5
+Demo Investor's > Mutual Funds > Equity 1-1 of 1 funds
+ Sample Index Fund (R)          69.48 %     1,24,075  1,00,000  24,075        18.20 %   24,075      0         1,234.57        100.50
+ Index • 3334444/55
+ Total                          69.48 %     1,24,075  1,00,000  24,075        18.20 %   24,075      0
+*Since the holding period is less than 365 days, XIRR is annualised.

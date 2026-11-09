@@ -1,0 +1,54 @@
+# Runs Ledgerly from the published image, with nothing to build:
+#
+#   docker compose -f docker-compose.image.yml up -d
+#
+# Settings come from the environment or a .env file beside this one. Every setting is
+# optional; the ones that matter on a server are AUTH_PASSWORD and BIND_ADDRESS.
+# The full list, with notes, is in .env.example and the README.
+#
+# The image is private while the repository is: log in first with
+#   docker login ghcr.io -u <github user>   (a token with read:packages as the password)
+
+services:
+  ledgerly:
+    image: ghcr.io/ramkrishna757575/ledgerly:${LEDGERLY_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      # Local only by default. Set BIND_ADDRESS=0.0.0.0 to reach it from other machines,
+      # which needs AUTH_PASSWORD too: the server refuses to start without one.
+      - ${BIND_ADDRESS:-127.0.0.1}:${PORT:-4310}:4310
+    environment:
+      PUBLISH_ADDRESS: ${BIND_ADDRESS:-127.0.0.1}
+      AUTH_PASSWORD: ${AUTH_PASSWORD:-}
+      # Set to true when it is served over HTTPS (behind Caddy, nginx or a tunnel).
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      TRUST_PROXY: ${TRUST_PROXY:-}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-}
+      PUBLIC_URL: ${PUBLIC_URL:-}
+      # Opens the API keys and mailbox passwords saved in the app: openssl rand -base64 32
+      SECRETS_KEY: ${SECRETS_KEY:-}
+      # Several people, each with their own books.
+      MULTI_USER: ${MULTI_USER:-}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-}
+      SIGNUP_MODE: ${SIGNUP_MODE:-}
+      # An AI provider can also be set in the app, under Settings. A model on this host is at
+      # http://host.docker.internal:11434/v1
+      AI_PROVIDER: ${AI_PROVIDER:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      # A folder of statements read by itself (mount it below and set WATCH_DIR=/inbox).
+      WATCH_DIR: ${WATCH_DIR:-}
+      WATCH_PASSWORDS: ${WATCH_PASSWORDS:-}
+      # Daily copy of the backups somewhere else (a folder, or an S3-compatible bucket).
+      BACKUP_COPY_DIR: ${BACKUP_COPY_DIR:-}
+      BACKUP_PASSPHRASE: ${BACKUP_PASSPHRASE:-}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      # A named volume by default. Set DATA_PATH to a folder to keep the data there instead.
+      - ${DATA_PATH:-ledgerly-data}:/data
+      - ${INBOX_DIR:-./inbox}:/inbox
+
+volumes:
+  ledgerly-data:

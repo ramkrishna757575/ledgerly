@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+
+# Financial data never goes in git
+data/
+*.db
+*.db-shm
+*.db-wal
+*.pdf
+*.xls
+*.xlsx
+*.csv
+!**/fixtures/**
+.claude/launch.json

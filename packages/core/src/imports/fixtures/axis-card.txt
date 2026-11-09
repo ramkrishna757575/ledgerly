@@ -1,0 +1,22 @@
+                                                                                                                 Axis Bank Credit Card Statement
+DEMO CUSTOMER
+FLAT 1, DEMO APARTMENTS
+DEMO CITY 560001
+                                                                                              PAYMENT SUMMARY
+       Total Payment Due                          Minimum Payment Due                                 Statement Period                               Payment Due Date
+           7,500.00 Dr                                    375.00 Dr                             12/09/2026 - 11/10/2026                                  01/11/2026
+       Credit Card Number                                  Credit Limit                            Available Credit Limit                           Available Cash Limit
+       123456******9876                                    100,000.00                                      92,500.00                                       0.00
+              Previous Balance - Payments - Credits + Purchase + Cash Advance + Other Debit&Charges =Total Payment Due
+     5,000.00 Dr                 5,000.00                0.00            7,336.00                   0.00            164.00              7,500.00 Dr
+                                                                                                      Account Summary
+      DATE                                      TRANSACTION DETAILS                              MERCHANT CATEGORY                                 AMOUNT (Rs.)
+                     Card No: 123456******9876                      Name DEMO CUSTOMER
+ 14/09/2026            BBPS PAYMENT #DEMO000000001                                                                                                  5,000.00 Cr
+ 15/09/2026            UPI/Demo Cafe/democafe@icici/Payment                           FOOD AND BEVERAGES                                              320.00 Dr
+ 16/09/2026            UPI/Demo Mart/demomart@okaxis                                  GROCERY                                                       2,016.00 Dr
+ 20/09/2026            DEMO FOREX TRANSACTION          ( USD 40.00 )                  TRAVEL                                                        5,000.00 Dr
+ 30/09/2026            DEMO ANNUAL FEE                                                                                                                  139.00 Dr
+ 30/09/2026            GST                                                                                                                               25.00 Dr
+                                                                                                      **** End of Statement ****
+ Your cheque should be drawn in favour of Axis Bank Card No.123456******9876 . Please write your NAME & Mobile No. on the reverse of the cheque.

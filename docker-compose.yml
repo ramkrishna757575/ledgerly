@@ -1,0 +1,77 @@
+services:
+  ledgerly:
+    build: .
+    restart: unless-stopped
+    ports:
+      - ${BIND_ADDRESS:-127.0.0.1}:${PORT:-4310}:4310
+    environment:
+      # The server refuses to start if this is not local and no password is set.
+      PUBLISH_ADDRESS: ${BIND_ADDRESS:-127.0.0.1}
+      AUTH_PASSWORD: ${AUTH_PASSWORD:-}
+      VIEWER_PASSWORD: ${VIEWER_PASSWORD:-}
+      MULTI_USER: ${MULTI_USER:-}
+      SIGNUP_MODE: ${SIGNUP_MODE:-}
+      SIGNUP_RATE: ${SIGNUP_RATE:-}
+      USER_QUOTA_MB: ${USER_QUOTA_MB:-}
+      TRUST_PROXY: ${TRUST_PROXY:-}
+      SECRETS_KEY: ${SECRETS_KEY:-}
+      MAX_OPEN_LEDGERS: ${MAX_OPEN_LEDGERS:-}
+      PUBLIC_URL: ${PUBLIC_URL:-}
+      BACKUP_COPY_DIR: ${BACKUP_COPY_DIR:-}
+      BACKUP_S3_ENDPOINT: ${BACKUP_S3_ENDPOINT:-}
+      BACKUP_S3_REGION: ${BACKUP_S3_REGION:-}
+      BACKUP_S3_BUCKET: ${BACKUP_S3_BUCKET:-}
+      BACKUP_S3_KEY: ${BACKUP_S3_KEY:-}
+      BACKUP_S3_SECRET: ${BACKUP_S3_SECRET:-}
+      BACKUP_S3_PREFIX: ${BACKUP_S3_PREFIX:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-}
+      SMTP_SECURE: ${SMTP_SECURE:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-}
+      AI_FOR_ALL_USERS: ${AI_FOR_ALL_USERS:-}
+      BACKUP_PASSPHRASE: ${BACKUP_PASSPHRASE:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-}
+      # Optional AI review. A local model on the host is reachable at http://host.docker.internal:11434/v1
+      AI_PROVIDER: ${AI_PROVIDER:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      AWS_BEARER_TOKEN_BEDROCK: ${AWS_BEARER_TOKEN_BEDROCK:-}
+      AWS_REGION: ${AWS_REGION:-}
+      NOTIFY_NTFY_URL: ${NOTIFY_NTFY_URL:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+      NOTIFY_WEBHOOK_URL: ${NOTIFY_WEBHOOK_URL:-}
+      WATCH_DIR: ${WATCH_DIR:-}
+      MAIL_HOST: ${MAIL_HOST:-}
+      MAIL_PORT: ${MAIL_PORT:-}
+      MAIL_SECURE: ${MAIL_SECURE:-}
+      MAIL_USER: ${MAIL_USER:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_FOLDER: ${MAIL_FOLDER:-}
+      MAIL_SENDERS: ${MAIL_SENDERS:-}
+      MAIL_REQUIRE_AUTH: ${MAIL_REQUIRE_AUTH:-}
+      WATCH_PASSWORDS: ${WATCH_PASSWORDS:-}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - ledgerly-data:/data
+      # Statements dropped in this folder are imported by themselves (set WATCH_DIR=/inbox).
+      - ${INBOX_DIR:-./inbox}:/inbox
+
+  # Sample data only, rebuilt on every start: docker compose --profile demo up demo
+  demo:
+    profiles: [demo]
+    build: .
+    ports:
+      - ${BIND_ADDRESS:-127.0.0.1}:${DEMO_PORT:-4311}:4310
+    environment:
+      DEMO_MODE: 'true'
+
+volumes:
+  ledgerly-data:

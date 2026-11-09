@@ -1,0 +1,25 @@
+                         Axis Bank Statement for Demo Customer
+Demo Customer                                                   Demo Customer Mobile No: XXXXXX0000
+Customer ID: 100000001                                          PAN: XXXXXXXX0X
+
+                           Statement for the period from: 01-10-2026 to 31-10-2026
+Savings Account(s)
+Summary
+Account No.                           Branch                  IFSC Code     MICR Code       CCY                 Balance Type
+123456789012345                       Demo Branch [01]        UTIB0000001   110211001       INR                 1,41,649.50 Cr.
+Statement for Account No. 123456789012345 for the period from 01-10-2026 to 31-10-2026
+Scheme Name: SB-Demo Savings                                                                      Joint Holder: -
+Date              Transaction Details                                                 Chq         Withdrawal        Deposits       Balance
+                                                                                      No.
+                                                  Opening Balance                                                              1,00,000.00
+01-10-2026 UPI/P2A/100000000001/Rahul Sharma /UPI/Demo Bank                                           500.00                    99,500.00
+02-10-2026 NEFT CREDITED FROM ACME TECHNOLOGIES LIMITED(DEMO BANK)                                                 85,000.00 1,84,500.00
+           (DEMOB2610020001)
+03-10-2026 UPI/P2M/100000000002/SWIGGY/swiggy@icici/Demo Bank                                       1,250.50                  1,83,249.50
+           LIMITED
+05-10-2026 ACH-DR-DE ACH INDIAN CLEARING CORP-1234567890-DEMO000001                                15,000.00                  1,68,249.50
+05-10-2026 ACH-DR-DE ACH INDIAN CLEARING CORP-1234567890-DEMO000001                                15,000.00                  1,53,249.50
+20-10-2026 Demo Card Payment DE 1234 Ref#DEMOREF000001                                             12,000.00                  1,41,249.50
+31-10-2026 SB:123456789012345:Int.Pd:01-07-2026 to 30-09-2026                                                        400.00 1,41,649.50
+                                                                                  Page 1 of 1
+                                                                                                          ++++ End of Statement ++++

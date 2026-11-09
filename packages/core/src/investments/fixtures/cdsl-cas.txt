@@ -1,0 +1,51 @@
+                                      Demo Depository Services (India) Limited
+          CONSOLIDATED ACCOUNT STATEMENT (CAS) FOR SECURITIES HELD IN DEMAT
+              AND INVESTMENTS IN MUTUAL FUNDS FOR THE PERIOD FROM 01-09-2026
+                                        TO 30-09-2026
+                                          Summary of Investments
+       Name/Joint Name (s)                        Portfolio Valuation (In `)
+                                           CDSL Demat Account                               0.00
+       DEMO INVESTOR                       Mutual Fund Folios                   3           1,77,332.50
+                                           Total Portfolio Value                        1,77,332.50
+
+                          STATEMENT OF TRANSACTIONS FOR THE PERIOD FROM 01-09-2026 TO 30-09-2026
+ MUTUAL FUND UNITS HELD WITH MF/RTA
+Demo Mutual Fund
+123AB - Demo Liquid Fund - Growth-Regular Plan
+ISIN : INF000D01AA1 UCC : NOT AVAILABLE
+ Date       Transaction Description          Amount (`)   NAV (`)       Price (`)     Units         Duty (`)
+           Opening Balance                                                            100.000
+05-09-2026 Purchase - SIP Instalment No       5000.00     100.0000      100.0000      50.000        .25     0     0
+           - 3/100 123456789
+           Closing Balance                                                            150.000
+Sample Mutual Fund
+SMIF - Sample Index Fund - Growth (Regular Plan)
+Plan - Growth
+           Opening Balance                                                            1,000.000
+           Purchase through Systematic Plan
+10-09-2026 No 7/12                            23456.70    100.0000      100.0000      234.567       1.17    0     0
+           Closing Balance                                                            1,234.567
+Example Mutual Fund
+77 - Example Debt Fund - Regular Plan Growth
+           Opening Balance                                                            1,000.000
+20-09-2026 Redemption                         10000.00    50.0000       50.0000       (200.000)     0       0     0
+           Closing Balance                                                            800.000
+
+                                                  MUTUAL FUND UNITS HELD AS ON 30-09-2026
+
+                                                                                                                  Average Total           Gross
+                                                                                                                  Expense Ratio           Commission    Unreal-
+                                                                                        Cumulative              (TER) (In % Terms)        Paid to   Unrealised ised
+Scheme Name                   ISIN         Folio No.    ARN Code   Bal        NAV (`)   Invested (in Valuation (`)
+                                                                   (Units)                                                                (in absolute  Loss    Loss
+                                                                                            INR)
+123AB - Demo Liquid
+Fund - Growth-Regular         INF000D01AA1 11112222
+Plan (Direct Growth)                                    ARN-123456 150.000    100.0000  14,000.00    15,000.00    .85    0     12.50     1,000.00       7.14
+
+SMIF - Sample Index Fund -
+Growth (Regular Plan)         INF000S02BB2 3334444/55   ARN-123456 1,234.567  98.7654   1,00,000.00  1,21,932.50  .91    0     33.40     21,932.50      21.93
+
+77 - Example Debt Fund -
+Regular Plan Growth           INF000E03CC3 5555666      ARN-123456 800.000    50.5000   42,000.00    40,400.00    .70    0     5.00      -1,600.00      -3.81
+                                           6/7
