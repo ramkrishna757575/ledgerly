@@ -80,6 +80,37 @@ describe('CDSL consolidated account statement', () => {
   });
 });
 
+describe('CDSL consolidated account statement, newer layout', () => {
+  // Same statement family, but no distributor column: each row is the ISIN, folio, then six figures,
+  // and the scheme name wraps over the lines above and below the row.
+  const parsed = cdsl.parse(fixture('cdsl-cas-v2.txt'));
+
+  it('reads every holding and checks the total against the statement', () => {
+    expect(parsed).toMatchObject({ source: 'cdsl', asOf: '2026-09-30', statedTotal: 3_512_010 });
+    expect(parsed.warnings).toEqual([]);
+    expect(parsed.holdings).toHaveLength(3);
+    expect(parsed.holdings.reduce((sum, h) => sum + h.value, 0)).toBe(3_512_010);
+  });
+
+  it('puts the wrapped scheme name back together without the figures or the next scheme', () => {
+    expect(parsed.holdings.map((h) => [h.schemeCode, h.name])).toEqual([
+      ['DLF', 'Demo Liquid Fund - Growth- Regular Plan (Formerly known as Demo Savings Fund)'],
+      ['SIF', 'Sample Index Fund - Regular Plan - Growth'],
+      ['77', 'Example Debt Fund - Regular Plan Growth'],
+    ]);
+  });
+
+  it('reads units, price, value, cost and the folio, including a loss', () => {
+    expect(parsed.holdings[0]).toMatchObject({ isin: 'INF000D01AA1', folio: '11112222/95', units: 100_000_000, nav: 150_000_000, value: 1_500_000, invested: 1_200_000 });
+    expect(parsed.holdings[2]).toMatchObject({ isin: 'INF000E01CC3', value: 1_005_000, invested: 1_100_000 });
+  });
+
+  it('still reads the month\'s transactions, and is picked by the same adapter', () => {
+    expect(parsed.blocks[0]!.rows).toHaveLength(1);
+    expect(detectInvestmentAdapter(fixture('cdsl-cas-v2.txt'))?.id).toBe('cas-cdsl');
+  });
+});
+
 describe('Scripbox portfolio report', () => {
   const parsed = scripbox.parse(fixture('scripbox-portfolio.txt'));
 

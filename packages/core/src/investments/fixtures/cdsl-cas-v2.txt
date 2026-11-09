@@ -1,0 +1,56 @@
+                                    Demo Depository Services (India) Limited
+
+         CONSOLIDATED ACCOUNT STATEMENT (CAS) FOR SECURITIES HELD IN DEMAT
+        FORM AND INVESTMENTS IN MUTUAL FUNDS FOR THE PERIOD FROM 01-09-2026
+                                   TO 30-09-2026
+
+                                      Summary of Investments
+                                    (On the basis of PAN of first holder)
+
+       Name/Joint Name (s)                          Portfolio Valuation (In `)
+                                      CDSL Demat Accounts                         0.00
+      DEMO INVESTOR                   Mutual Fund Folios                      35,120.10
+
+                                       Total Portfolio Value                  35,120.10
+
+                                       MUTUAL FUND UNITS HELD WITH MF/RTA
+
+                 STATEMENT OF TRANSACTIONS FOR THE PERIOD FROM 01-09-2026 TO 30-09-2026
+
+Demo Mutual Fund
+DLF - Demo Liquid Fund - Growth-Regular Plan
+ISIN : INF000D01AA1                                                    UCC : MFDEMO0001
+                                                                                                               Income Capital
+                                                                                                      Stamp
+   Date      Transaction Description      Amount (`)     NAV (`)         Price (`)     Units                   Distrib­ Withdr­
+                                                                                                      Duty (`) ution (`) awal (`)
+           Opening Balance                                                                 90.000
+
+05-09-2026 Purchase - SIP Instalment No       1500.00       150.0000       150.0000         10.000         .08         0        0
+           - 5/180 123456789
+           Closing Balance                                                                100.000
+
+
+
+                                       MUTUAL FUND UNITS HELD AS ON 30-09-2026
+
+                                                                                               Cumulative                                              Unreali­
+                                                                  Closing                        Amount                                Unrealised        sed
+     Scheme Name                ISIN            Folio No.           Bal         NAV (`)                            Valuation (`)
+                                                                                               Invested (in                            Profit/Loss      Profit/
+                                                                  (Units)                          INR)                                                Loss(%)
+DLF - Demo Liquid
+Fund - Growth-
+Regular Plan         INF000D01AA1             11112222/95          100.000        150.0000           12,000.00           15,000.00         3,000.00       25.00
+(Formerly known as
+Demo Savings Fund)
+SIF - Sample Index
+Fund - Regular       INF000S01BB2            55556666/02          250.500          40.2000            9,000.00           10,070.10         1,070.10       11.89
+Plan - Growth
+77 - Example Debt Fund
+- Regular Plan        INF000E01CC3             33334444          50.250        200.0000           11,000.00           10,050.00          -950.00       -8.64
+Growth
+Grand Total                                                                                       32,000.00           35,120.10
+
+Load Structures
+      IDCW - Income Distribution and Capital Withdrawal

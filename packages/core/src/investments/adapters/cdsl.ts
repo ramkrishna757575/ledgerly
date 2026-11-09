@@ -41,7 +41,7 @@ function parseHoldings(lines: string[], warnings: string[]): ParsedHolding[] {
   const nameWidth = headerIndex >= 0 ? lines[headerIndex]!.indexOf('ISIN') : 28;
   let start = headerIndex + 1;
   for (let i = headerIndex + 1; i < Math.min(lines.length, headerIndex + 8); i += 1) {
-    if (/\bINR\)\s*$/.test(lines[i]!)) start = i + 1;
+    if (/(\bINR\)|Loss\(%\))\s*$/.test(lines[i]!)) start = i + 1;
   }
 
   const tuples: { line: number; figures: string[] }[] = [];
@@ -57,6 +57,7 @@ function parseHoldings(lines: string[], warnings: string[]): ParsedHolding[] {
       isins.push({ line: i, isin: hit[1]!, folio: isFolio ? after : undefined, folioColumn: line.indexOf(after ?? '', hit.index) });
     }
   }
+  if (tuples.length === 0) return parseWideHoldings(lines, start, warnings);
   if (tuples.length !== isins.length) {
     warnings.push(`Found ${tuples.length} holdings but ${isins.length} ISINs, so some may be misread`);
   }
@@ -114,6 +115,58 @@ function parseHoldings(lines: string[], warnings: string[]): ParsedHolding[] {
       value,
       invested,
     };
+  });
+}
+
+// The newer statement: no distributor column. Each row is the ISIN, the folio, then units, NAV, amount
+// invested, valuation, profit and profit %. The scheme name wraps over the lines above and below the row,
+// and where the ISIN sits changes from row to row, so a name starts at the line that begins with its
+// scheme code ("151IG - Aditya Birla ...") and runs to the next one.
+const WIDE_ROW = new RegExp(String.raw`\b(IN[A-Z0-9]{10})\s+(\S+)\s+(${NUM})\s+(${NUM})\s+(${NUM})\s+(${NUM})\s+(${NUM})\s+(${NUM})\s*$`);
+const NAME_START = /^\s*[A-Z0-9]{2,6}\s+-\s+\S/;
+
+function parseWideHoldings(lines: string[], start: number, warnings: string[]): ParsedHolding[] {
+  const rows: { line: number; isinAt: number; isin: string; folio: string; figures: string[] }[] = [];
+  let end = lines.length;
+  for (let i = start; i < lines.length; i += 1) {
+    const line = lines[i]!;
+    if (/^\s*Grand Total/i.test(line)) {
+      end = i;
+      break;
+    }
+    const hit = WIDE_ROW.exec(line);
+    if (hit) rows.push({ line: i, isinAt: hit.index, isin: hit[1]!, folio: hit[2]!, figures: hit.slice(3) });
+  }
+
+  // Where each name begins: the nearest name-start line at or above its row, below the previous row.
+  const begins = rows.map((row, k) => {
+    const floor = (rows[k - 1]?.line ?? start - 1) + 1;
+    let at = row.line;
+    while (at > floor && !NAME_START.test(lines[at]!)) at -= 1;
+    return at;
+  });
+
+  return rows.map((row, k) => {
+    const to = k + 1 < rows.length ? begins[k + 1]! - 1 : Math.min(end - 1, row.line + 6);
+    const pieces: string[] = [];
+    for (let i = begins[k]!; i <= to; i += 1) {
+      const text = i === row.line ? lines[i]!.slice(0, row.isinAt) : lines[i]!;
+      if (text.trim()) pieces.push(text.trim());
+    }
+    const { schemeCode, name } = splitCode(clean(pieces.join(' ')));
+
+    const [unitsText, navText, first, second] = row.figures as [string, string, string, string];
+    const units = toMicro(unitsText);
+    const nav = toMicro(navText);
+    // Amount invested and valuation come one after the other. Units times NAV tells them apart.
+    const expected = valueOf(units, nav);
+    const a = parseAmount(first.replace(/[()]/g, ''));
+    const b = parseAmount(second.replace(/[()]/g, ''));
+    const [value, invested] = Math.abs(a - expected) <= Math.abs(b - expected) ? [a, b] : [b, a];
+    if (expected > 0 && Math.abs(value - expected) / expected > 0.01) {
+      warnings.push(`${name || row.isin}: units times NAV does not match the valuation`);
+    }
+    return { name, isin: row.isin, folio: row.folio, schemeCode, assetClass: classifyFund(name), units, nav, value, invested };
   });
 }
 
