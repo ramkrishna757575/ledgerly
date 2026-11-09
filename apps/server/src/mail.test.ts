@@ -152,18 +152,6 @@ describe('collecting statements from email', () => {
     expect(readdirSync(join(config.dataDir, 'documents'))).toEqual([]);
   });
 
-  it('tries a held message again when it is marked unread, but never a handled one', async () => {
-    const { config, db } = setup();
-    const broken = message({ id: '7', attachments: [{ filename: 'broken.pdf', content: Buffer.from('%PDF-1.4 not really') }] });
-    expect((await scanMail(db, config, fakeSource([broken]).source))!.results).toMatchObject([{ outcome: 'held' }]);
-    // Marked unread again: it comes back and is tried again.
-    expect((await scanMail(db, config, fakeSource([broken]).source))!.results).toMatchObject([{ outcome: 'held' }]);
-
-    // A statement that was read is remembered, and is not looked at twice.
-    await scanMail(db, config, fakeSource([message({ id: '8' })]).source);
-    expect((await scanMail(db, config, fakeSource([message({ id: '8' })]).source))!.results).toEqual([]);
-  });
-
   it('recognises a statement it has already imported, however it arrives again', async () => {
     const { config, db } = setup();
     await scanMail(db, config, fakeSource([message({ id: '1' })]).source);

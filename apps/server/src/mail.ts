@@ -170,16 +170,12 @@ export async function scanMail(db: Db, config: Config, source?: MailSource, fetc
         done.push(message.id);
         continue;
       }
-      let held = false;
       for (const attachment of message.attachments) {
         const result = await ingestStatement(db, config, { name: attachment.filename, buffer: attachment.content, passwords: config.watchPasswords });
         results.push({ at, from: domain, file: attachment.filename, outcome: result.outcome, note: result.note });
-        held ||= result.outcome === 'held';
       }
       done.push(message.id);
-      // A message with something it could not read is not remembered, so marking it unread again, after the
-      // format is supported or the password is added, tries it again. It is read now, so it does not repeat by itself.
-      if (!held) log.seen.push(message.id);
+      log.seen.push(message.id);
     }
     await src.markDone(done);
   } catch (error) {
